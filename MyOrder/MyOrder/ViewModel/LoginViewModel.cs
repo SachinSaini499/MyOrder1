@@ -1,21 +1,23 @@
 ﻿using MyOrder.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-
+using MyOrder.Annotations;
+using MyOrder.Services;
+using Xamarin.Forms;
 
 namespace MyOrder.ViewModel
 {
     public class LoginViewModel : INotifyPropertyChanged
     {
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private LoginModel _selectedUser = new LoginModel();
-        private bool _isBusy = false;
+        //  public event PropertyChangedEventHandler PropertyChanged;
+        private CustomerDetail _selectedUser = new CustomerDetail();
+         private bool _isBusy = false;
         //private string _statusMessage = null;
         //bool IsSuccess;
         //int addSuccess;
@@ -33,7 +35,7 @@ namespace MyOrder.ViewModel
             }
         }
 
-        public LoginModel SelectedUser
+        public CustomerDetail SelectedUser
         {
             get { return _selectedUser; }
             set
@@ -47,34 +49,21 @@ namespace MyOrder.ViewModel
         {
             get
             {
-                return new Command(async () =>
+                return new Command(() =>
                 {
                     IsBusy = true;
-                   // var userServices = new UserServices();
-                   // var connectivityStatus = CrossConnectivity.Current.IsConnected;
+                    var customerServices = new CustomerServices();
                     if (true)
                     {
-
-                        //await userServices.loginUsersAsync(_selectedUser);
+                        //await customerServices.loginUsersAsync(_selectedUser);
                     }
-                    else
-                    {
 
-                        //addSuccess = await App.Database.SaveMember(_selectedUser);
-                    }
-                    //if (IsSuccess || addSuccess > 0)
-                    //{
-                    //    if (addSuccess > 0)
-                    //    { StatusMessage = "Add Susseccfully Locally"; }
-                    //    else
-                    //    { StatusMessage = "Add Susseccfully"; }
-                    //}
-                    //else
-                    //{ StatusMessage = "Sorry! Something went wronge."; }
                     IsBusy = false;
                 });
             }
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

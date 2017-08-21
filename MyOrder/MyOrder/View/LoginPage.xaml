@@ -10,7 +10,7 @@
     <ContentPage.Content>
         <Frame Padding="0,0,0,0"  VerticalOptions="CenterAndExpand"  OutlineColor="White" HasShadow="True" BackgroundColor="#171717">
 
-            <Grid Margin="20" BackgroundColor="FloralWhite" ColumnSpacing="0">
+            <Grid Margin="20" BackgroundColor="FloralWhite" ColumnSpacing="0" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
