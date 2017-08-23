@@ -15,15 +15,15 @@ namespace MyOrder.ViewModel
 {
     public class LoginViewModel : INotifyPropertyChanged
     {
-        //  public event PropertyChangedEventHandler PropertyChanged;
+        
         private CustomerDetail _selectedUser = new CustomerDetail();
          private bool _isBusy = false;
-        //private string _statusMessage = null;
-        //bool IsSuccess;
-        //int addSuccess;
-        //public string UserName { get; set; }
+         CustomerServices customerServices=new CustomerServices();
 
-        //public string Password { get; set; }
+
+        public string UserName { get; set; }
+
+        public string Password { get; set; }
 
         public bool IsBusy
         {
@@ -35,18 +35,19 @@ namespace MyOrder.ViewModel
             }
         }
 
-        public CustomerDetail SelectedUser
-        {
-            get { return _selectedUser; }
-            set
-            {
-                _selectedUser = value;
-                OnPropertyChanged();
-            }
-        }
+        //public CustomerDetail SelectedUser
+        //{
+        //    get { return _selectedUser; }
+        //    set
+        //    {
+        //        _selectedUser = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
 
         public Command LoginCommand
         {
+
             get
             {
                 return new Command(() =>
@@ -55,6 +56,7 @@ namespace MyOrder.ViewModel
                     var customerServices = new CustomerServices();
                     if (true)
                     {
+                        Task<List<CustomerDetail>> lstCustomerDetail= customerServices.GetUsersAsync();
                         //await customerServices.loginUsersAsync(_selectedUser);
                     }
 
