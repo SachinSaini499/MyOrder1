@@ -69,5 +69,9 @@ namespace MyOrder.Model
             set { _password = value; }
         }
 
+
+
+
+
     }
 }

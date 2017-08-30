@@ -15,10 +15,21 @@ namespace MyOrder.ViewModel
 {
     public class LoginViewModel : INotifyPropertyChanged
     {
-        
+         List<CustomerDetail> lstCustomerDetails;
+
+        public LoginViewModel()
+        {
+            getdata();
+        }
+
+        public async void getdata()
+        {
+            lstCustomerDetails = await customerServices.GetUsersAsync();
+        }
+
         private CustomerDetail _selectedUser = new CustomerDetail();
-         private bool _isBusy = false;
-         CustomerServices customerServices=new CustomerServices();
+        private bool _isBusy = false;
+        CustomerServices customerServices = new CustomerServices();
 
 
         public string UserName { get; set; }
@@ -53,12 +64,30 @@ namespace MyOrder.ViewModel
                 return new Command(() =>
                 {
                     IsBusy = true;
-                    var customerServices = new CustomerServices();
-                    if (true)
+                    foreach (var item in lstCustomerDetails)
                     {
-                        Task<List<CustomerDetail>> lstCustomerDetail= customerServices.GetUsersAsync();
-                        //await customerServices.loginUsersAsync(_selectedUser);
+                       string t= item.CustomerName;
+
+
                     }
+                   // if (lstCustomerDetail == null)
+                    {
+                        CustomerDetail customerDetail = new CustomerDetail();
+                        customerDetail.CustomerName = "Sachin";
+                        customerDetail.CustomerEmailId = "bdfhgdfhgfd";
+                        customerDetail.Password = "877878";
+                        customerServices.postUsersAsync(customerDetail);
+                    }
+                  //  else
+                    {
+                    }
+
+                    // foreach (var customerDetail in lstCustomerDetail)
+                    {
+                        
+                    }
+
+
 
                     IsBusy = false;
                 });
