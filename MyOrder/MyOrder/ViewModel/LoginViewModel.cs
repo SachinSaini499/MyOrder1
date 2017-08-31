@@ -9,33 +9,47 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using MyOrder.Annotations;
 using MyOrder.Services;
+using MyOrder.View;
 using Xamarin.Forms;
 
 namespace MyOrder.ViewModel
 {
     public class LoginViewModel : INotifyPropertyChanged
     {
-         List<CustomerDetail> lstCustomerDetails;
-
-        public LoginViewModel()
-        {
-            getdata();
-        }
-
-        public async void getdata()
-        {
-            lstCustomerDetails = await customerServices.GetUsersAsync();
-        }
-
-        private CustomerDetail _selectedUser = new CustomerDetail();
+        List<CustomerDetail> _lstCustomerDetails;
+        private CustomerDetail _selectedUser;
         private bool _isBusy = false;
-        CustomerServices customerServices = new CustomerServices();
-
+        CustomerServices customerServices;
+        private MessageData messageData;
+        private string _inValidCreadential;
 
         public string UserName { get; set; }
 
         public string Password { get; set; }
 
+        public LoginViewModel()
+        {
+            messageData = new MessageData();
+            _selectedUser = new CustomerDetail();
+            customerServices = new CustomerServices();
+            getdata();
+            _inValidCreadential = messageData.InvalidCredential;
+
+        }
+        public async void getdata()
+        {
+            _lstCustomerDetails = await customerServices.GetUsersAsync();
+           
+        }
+        public string inValidCreadential
+        {
+            get
+            {
+                var validCreadential = _inValidCreadential;
+                return validCreadential;
+            }
+            set { _inValidCreadential = value; }
+        }
         public bool IsBusy
         {
             get { return _isBusy; }
@@ -64,29 +78,31 @@ namespace MyOrder.ViewModel
                 return new Command(() =>
                 {
                     IsBusy = true;
-                    foreach (var item in lstCustomerDetails)
+                    UserName = "bdfhgdfhgfd";
+                    Password = "877878";
+                    foreach (var item in _lstCustomerDetails)
                     {
-                       string t= item.CustomerName;
-
-
-                    }
-                   // if (lstCustomerDetail == null)
-                    {
-                        CustomerDetail customerDetail = new CustomerDetail();
-                        customerDetail.CustomerName = "Sachin";
-                        customerDetail.CustomerEmailId = "bdfhgdfhgfd";
-                        customerDetail.Password = "877878";
-                        customerServices.postUsersAsync(customerDetail);
-                    }
-                  //  else
-                    {
+                        if (item.CustomerEmailId == UserName)
+                        {
+                            if (item.Password == Password)
+                            { 
+                                Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new AllProductPage());
+                            }
+                        }
                     }
 
-                    // foreach (var customerDetail in lstCustomerDetail)
-                    {
-                        
-                    }
 
+                    // // if (lstCustomerDetail == null)
+                    //  {
+                    //      CustomerDetail customerDetail = new CustomerDetail();
+                    //      customerDetail.CustomerName = "Sachin";
+                    //      customerDetail.CustomerEmailId = "bdfhgdfhgfd";
+                    //      customerDetail.Password = "877878";
+                    //      customerServices.postUsersAsync(customerDetail);
+                    //  }
+                    ////  else
+                    //  {
+                    //  }
 
 
                     IsBusy = false;
