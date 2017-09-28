@@ -13,7 +13,7 @@ namespace MyOrder
         {
             InitializeComponent();
 
-            MainPage = new MyOrder.LoginPage();
+            MainPage = new MyOrder.View.AllProductPage();
         }
 
         protected override void OnStart()

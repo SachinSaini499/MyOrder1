@@ -8,6 +8,7 @@ namespace MyOrder.Model
 {
   public  class MessageData
     {
-        public string InvalidCredential = "You entered invalid credentials";
+        public static string InvalidCredential = "You entered invalid credentials";
+        public static string EmptyCredential = "Please provide information";
     }
 }

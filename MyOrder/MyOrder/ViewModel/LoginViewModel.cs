@@ -17,31 +17,29 @@ namespace MyOrder.ViewModel
     public class LoginViewModel : INotifyPropertyChanged
     {
         List<CustomerDetail> _lstCustomerDetails;
-        private CustomerDetail _selectedUser;
+        private CustomerDetail customerDetail;
         private bool _isBusy = false;
+        private bool _loginSuccess = false;
         CustomerServices customerServices;
-        private MessageData messageData;
         private string _inValidCreadential;
-
         public string UserName { get; set; }
-
         public string Password { get; set; }
-
         public LoginViewModel()
         {
-            messageData = new MessageData();
-            _selectedUser = new CustomerDetail();
+           
+            customerDetail = new CustomerDetail();
             customerServices = new CustomerServices();
             getdata();
-            _inValidCreadential = messageData.InvalidCredential;
+            
 
         }
         public async void getdata()
         {
             _lstCustomerDetails = await customerServices.GetUsersAsync();
-           
+
         }
-        public string inValidCreadential
+        
+        public string InValidCreadential
         {
             get
             {
@@ -59,7 +57,7 @@ namespace MyOrder.ViewModel
                 OnPropertyChanged();
             }
         }
-
+       
         //public CustomerDetail SelectedUser
         //{
         //    get { return _selectedUser; }
@@ -70,6 +68,18 @@ namespace MyOrder.ViewModel
         //    }
         //}
 
+        public Command SignUpCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    Xamarin.Forms.Application.Current.MainPage.Navigation.PushModalAsync(
+                        new SignUp());
+                });
+            }
+        }
+
         public Command LoginCommand
         {
 
@@ -78,17 +88,33 @@ namespace MyOrder.ViewModel
                 return new Command(() =>
                 {
                     IsBusy = true;
-                    UserName = "bdfhgdfhgfd";
-                    Password = "877878";
-                    foreach (var item in _lstCustomerDetails)
+                   // UserName = "bdfhgdfhgfd";
+                   // Password = "877878";
+                    if (UserName==""||Password=="")
                     {
-                        if (item.CustomerEmailId == UserName)
+                        InValidCreadential = MessageData.EmptyCredential;
+                    }
+                    else
+                    {
+                        foreach (var item in _lstCustomerDetails)
                         {
-                            if (item.Password == Password)
-                            { 
-                                Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new AllProductPage());
+                            if (item.CustomerEmailId == UserName)
+                            {
+                                if (item.Password == Password)
+                                {
+                                    Xamarin.Forms.Application.Current.MainPage.Navigation.PushModalAsync(
+                                        new AllProductPage());
+                                    return;
+                                    _loginSuccess = true;
+                                }
                             }
                         }
+                        if(!_loginSuccess)
+                        {
+                            InValidCreadential = MessageData.InvalidCredential;
+                        }
+
+
                     }
 
 

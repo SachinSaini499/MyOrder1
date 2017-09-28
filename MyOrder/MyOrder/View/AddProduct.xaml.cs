@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace MyOrder.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AllProductPage : ContentPage
+    public partial class AddProduct : ContentPage
     {
-        public AllProductPage()
+        public AddProduct()
         {
             InitializeComponent();
         }

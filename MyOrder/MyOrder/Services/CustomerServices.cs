@@ -12,7 +12,6 @@ namespace MyOrder.Services
     {
         async public Task<List<CustomerDetail>> GetUsersAsync()
         {
-
             RestClient<CustomerDetail> restClient = new RestClient<CustomerDetail>();
             var lstUser = await restClient.GetAsync();
             return lstUser;

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyOrder.View.AddProduct"
+             xmlns:viewmodel="clr-namespace:MyOrder.ViewModel">
+    <ContentPage.BindingContext>
+        <viewmodel:AddProductModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry Text="{Binding productDetail.ProductName,Mode=TwoWay}" Placeholder="Product Name"></Entry>       
+           
+
+            <Entry Placeholder="Product Categary" Text="{Binding ProductCategary,Mode=TwoWay}" ></Entry>
+            
+            <Entry Placeholder="Product Cost" Text="{Binding ProductCost,Mode=TwoWay}"  Keyboard="Keyboard.Numeric" ></Entry>
+            
+            <!--<DatePicker   Date="{Binding ManufacteringDate}"></DatePicker>-->
+
+            <Image  Grid.Row="5" Grid.Column="0" Grid.RowSpan="2"  Grid.ColumnSpan="2"  />
+            <Button Text="Take"  Command="{Binding TakeCommand}" />
+            
+            
+
+
+
+
+
+
+            <Button Text="ADD"  Command="{Binding SubmitCommand}"></Button>
+            
+            
+            
+            
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

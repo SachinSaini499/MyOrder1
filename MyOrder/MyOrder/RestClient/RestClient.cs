@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using MyOrder.Model;
 
 namespace Plugin.RestClient
 {
@@ -13,13 +14,24 @@ namespace Plugin.RestClient
     /// </summary>
     public class RestClient<T>
     {
-        private const string WebServiceUrl = "http://mywebservices1.azurewebsites.net/api/CustomerDetails";
+        private  string WebServiceUrl = "http://mywebservices1.azurewebsites.net/api/CustomerDetails";
         //"http://taskmodel.azurewebsites.net/api/TaskModels/";
 
-
+       public RestClient()
+        {
+            if (typeof(ProductDetail) == typeof(T))
+            {
+                WebServiceUrl = "http://myservices3.azurewebsites.net/api/ProductDetails";
+            }
+            else if (typeof(CustomerDetail) == typeof(T))
+            {
+                WebServiceUrl = "http://myservices3.azurewebsites.net/api/CustomerDetails";
+            }
+        }
 
         public async Task<List<T>> GetAsync()
         {
+           
             var httpClient = new HttpClient();
 
             var json = await httpClient.GetStringAsync(WebServiceUrl);

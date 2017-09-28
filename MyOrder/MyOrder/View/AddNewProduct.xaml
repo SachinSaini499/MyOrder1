@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:MyOrder.ViewModel;assembly=MyOrder"
+             x:Class="MyOrder.View.AddNewProduct">
+    <ContentPage.BindingContext>
+        <viewModel:AddProductModel/>
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <Grid RowSpacing="4" ColumnSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <Entry Grid.Row="0" FontSize="17" TextColor="#2f1d6b" Placeholder="Enter Product Name" Text="{Binding productDetail.ProductName,Mode=TwoWay}" Grid.ColumnSpan="3" Grid.Column="0" ></Entry>
+            <Image x:Name="PNameErrorImage"   HeightRequest="25" Grid.Row="0" Grid.Column="4" HorizontalOptions="End" IsVisible="false"  Source="Wrong.png" VerticalOptions="Fill"/>
+
+            <Entry Grid.Row="1" FontSize="17" TextColor="#2f1d6b" Placeholder="Enter Product Categary" Text="{Binding productDetail.ProductCategary,Mode=TwoWay}" Grid.ColumnSpan="3" Grid.Column="0" ></Entry>
+            <Image x:Name="PCategaryErrorImage"   HeightRequest="25" Grid.Row="1" Grid.Column="4" HorizontalOptions="End" IsVisible="false"  Source="Wrong.png" VerticalOptions="Fill"/>
+            <Entry Grid.Row="2" FontSize="17" TextColor="#2f1d6b" Placeholder="Enter Product Cost" Text="{Binding productDetail.ProductCost,Mode=TwoWay}"  Keyboard="Keyboard.Numeric" Grid.ColumnSpan="3" Grid.Column="0" ></Entry>
+            <Image x:Name="PCostErrorImage"   HeightRequest="25" Grid.Row="2" Grid.Column="4" HorizontalOptions="End" IsVisible="false"  Source="Wrong.png" VerticalOptions="Fill"/>
+            <DatePicker x:Name="DPMgrDate"  HeightRequest="20" TextColor="#2f1d6b" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"  ></DatePicker>
+            <Label Grid.Row="3" Grid.Column="4" BindingContext="{x:Reference DPMgrDate}" Text="{Binding  Path=Date}"></Label>
+
+
+
+            <Image x:Name="MainImage" Grid.Row="5" Grid.Column="0" Grid.RowSpan="2"  Grid.ColumnSpan="2" Source="{Binding Path=takeImage}" />
+            <Button x:Name="BtnTakeProduct" Text="Take" BorderRadius="2" BorderColor="Black"   HeightRequest="40"  Grid.Row="5" Grid.Column="3" TextColor="#2f1d6b" Command="{Binding TakeCommand}" />
+            <!--<Button x:Name="BtnBrowseProduct" Text="Browse" BorderRadius="2" BorderColor="Black"   HeightRequest="40" Grid.Row="6" Grid.Column="3" TextColor="#2f1d6b" Command="{Binding BrowseCommand}"></Button>-->
+            <Button x:Name="BtnAddProduct" HorizontalOptions="Start" BackgroundColor="#2f1d6b"  VerticalOptions="Center" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="4" TextColor="#2f1d6b" Text="Submit" Command="{Binding SubmitCommand}"  />
+        </Grid>
+
+
+
+
+
+    </ScrollView>
+</ContentPage>
