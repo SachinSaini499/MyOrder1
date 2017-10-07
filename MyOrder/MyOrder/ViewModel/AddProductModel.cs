@@ -29,6 +29,14 @@ namespace MyOrder.ViewModel
         public string ManufacteringDate { get; set; }
         byte[] bteImageBytes;
         public ImageSource takeImage { get; set; }
+
+        public bool productFlag { get; set; }
+
+        public bool categoryFlag { get; set; }
+
+        public bool costFlag { get; set; }
+
+
         public ProductDetail productDetail
         {
             get { return _productDetail; }

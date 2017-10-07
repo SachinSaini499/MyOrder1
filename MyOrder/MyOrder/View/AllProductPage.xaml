@@ -1,27 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-              xmlns:viewmodels="clr-namespace:MyOrder.ViewModel"
-             x:Class="MyOrder.View.AllProductPage">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
+                xmlns:viewmodel="clr-namespace:MyOrder.ViewModel"     
+             x:Class="MyOrder.View.AllProductPage"
+             BackgroundImage="WoodyBAckground.jpg"
+             >  
+ 
+
     <ContentPage.BindingContext>
-        <viewmodels:AllProductModel/>
-    </ContentPage.BindingContext>
+        <viewmodel:AllProductModel/>
+    </ContentPage.BindingContext>   
+   
     <StackLayout>
-        <Grid Margin="20" VerticalOptions="CenterAndExpand" Padding="10"  >
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Button Grid.Column="2" HorizontalOptions="StartAndExpand" Grid.Row="0" Text="Add Product" Command="{Binding AddProductCommand}" ></Button>
-        </Grid>
+        <StackLayout Orientation="Horizontal">
+            <Button   HorizontalOptions="StartAndExpand" Text="Add Product" Command="{Binding AddProductCommand}" ></Button>
+            <Button  HorizontalOptions="StartAndExpand" Text="Back" Command="{Binding ShowProductCommand}" ></Button>
+        </StackLayout>
+        
+            <ListView ItemsSource="{Binding lstProductDetail2}" HasUnevenRows="True" SeparatorColor="Black"
+              CachingStrategy="RecycleElement"
+              RowHeight="60">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                        <Grid ColumnSpacing="0" RowSpacing="0" Margin="4" Padding="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" ></RowDefinition>
+                                <RowDefinition Height="50" ></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"></ColumnDefinition>
+                                <ColumnDefinition Width="7*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Image HorizontalOptions="Start" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"  Source="{Binding ProductImage}" ></Image>
+                            <Label HorizontalOptions="Start" Grid.Row="0" Grid.Column="1"  Text="{Binding ProductName}" TextColor="#483018" FontSize="Medium"  FontAttributes="Bold" />
+                            <Label HorizontalOptions="Start" Grid.Row="1" Grid.Column="1" Text="{Binding ProductCategary}" TextColor="Black" />                            
+                        </Grid>
+                    </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
     </StackLayout>
-  
+
 </ContentPage>

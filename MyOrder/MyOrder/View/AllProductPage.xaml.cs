@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyOrder.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,8 @@ namespace MyOrder.View
         public AllProductPage()
         {
             InitializeComponent();
+
+            BindingContext = new AllProductModel();
         }
     }
 }

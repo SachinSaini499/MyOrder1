@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewModel="clr-namespace:MyOrder.ViewModel;assembly=MyOrder"
-             x:Class="MyOrder.View.AddNewProduct">
-    <ContentPage.BindingContext>
-        <viewModel:AddProductModel/>
-    </ContentPage.BindingContext>
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"            
+             x:Class="MyOrder.View.AddNewProduct" BackgroundImage="WoodyBAckground.jpg">
+
 
     <ScrollView>
-        <Grid RowSpacing="4" ColumnSpacing="0">
+        <Grid RowSpacing="4" ColumnSpacing="0" Margin="10"  >
             <Grid.RowDefinitions>
-                <RowDefinition Height="50"></RowDefinition>
-                <RowDefinition Height="50"></RowDefinition>
-                <RowDefinition Height="50"></RowDefinition>
-                <RowDefinition Height="50"></RowDefinition>
-                <RowDefinition Height="50"></RowDefinition>
-                <RowDefinition Height="50"></RowDefinition>
-                <RowDefinition Height="50"></RowDefinition>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -26,23 +26,31 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            
-            <Entry Grid.Row="0" FontSize="17" TextColor="#2f1d6b" Placeholder="Enter Product Name" Text="{Binding productDetail.ProductName,Mode=TwoWay}" Grid.ColumnSpan="3" Grid.Column="0" ></Entry>
-            <Image x:Name="PNameErrorImage"   HeightRequest="25" Grid.Row="0" Grid.Column="4" HorizontalOptions="End" IsVisible="false"  Source="Wrong.png" VerticalOptions="Fill"/>
+            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" FontSize="Large"  FontAttributes="Bold" HorizontalOptions="CenterAndExpand" Text="Add New Product" TextColor="#483018"></Label>
 
-            <Entry Grid.Row="1" FontSize="17" TextColor="#2f1d6b" Placeholder="Enter Product Categary" Text="{Binding productDetail.ProductCategary,Mode=TwoWay}" Grid.ColumnSpan="3" Grid.Column="0" ></Entry>
-            <Image x:Name="PCategaryErrorImage"   HeightRequest="25" Grid.Row="1" Grid.Column="4" HorizontalOptions="End" IsVisible="false"  Source="Wrong.png" VerticalOptions="Fill"/>
-            <Entry Grid.Row="2" FontSize="17" TextColor="#2f1d6b" Placeholder="Enter Product Cost" Text="{Binding productDetail.ProductCost,Mode=TwoWay}"  Keyboard="Keyboard.Numeric" Grid.ColumnSpan="3" Grid.Column="0" ></Entry>
-            <Image x:Name="PCostErrorImage"   HeightRequest="25" Grid.Row="2" Grid.Column="4" HorizontalOptions="End" IsVisible="false"  Source="Wrong.png" VerticalOptions="Fill"/>
-            <DatePicker x:Name="DPMgrDate"  HeightRequest="20" TextColor="#2f1d6b" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"  ></DatePicker>
-            <Label Grid.Row="3" Grid.Column="4" BindingContext="{x:Reference DPMgrDate}" Text="{Binding  Path=Date}"></Label>
+            <Label Text="Product Name" TextColor="#483018" Grid.Row="1" FontAttributes="Italic"  Grid.Column="0" Grid.ColumnSpan="2"></Label>
+            <Entry Text="{Binding ProductName,Mode=TwoWay}" TextColor="#483018" FontAttributes="Italic"  Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="2" ></Entry>
+            <Image HorizontalOptions="End" IsVisible="{Binding productFlag}"  Source="Wrong.png" Grid.Row="1" Grid.Column="4"/>
+
+            <Label Text="Product Category" FontAttributes="Italic"  TextColor="#483018" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"></Label>
+            <Entry Text="{Binding ProductCategary,Mode=TwoWay}" FontAttributes="Italic"  TextColor="#483018" Grid.ColumnSpan="3" Grid.Row="2" Grid.Column="2" ></Entry>
+            <Image Grid.Row="2" Grid.Column="4" HorizontalOptions="End" IsVisible="{Binding categoryFlag}"  Source="Wrong.png"/>
+
+            <Label Text="Product Cost" FontAttributes="Italic"  Grid.Row="3" TextColor="#483018" Grid.Column="0" Grid.ColumnSpan="2"></Label>
+            <Entry Text="{Binding ProductCost,Mode=TwoWay}" FontAttributes="Italic"  TextColor="#483018" Keyboard="Keyboard.Numeric" Grid.ColumnSpan="3" Grid.Column="2" Grid.Row="3" ></Entry>
+            <Image Grid.Row="3" Grid.Column="4" HorizontalOptions="End" IsVisible="{Binding costFlag}"  Source="Wrong.png"/>
+
+            <Label Text="Manufactur Date" FontAttributes="Italic"  Grid.Row="4" TextColor="#483018" Grid.Column="0" Grid.ColumnSpan="2"></Label>
+            <DatePicker x:Name="DPMgrDate" HeightRequest="20" TextColor="#483018" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3"  ></DatePicker>
+            <Label x:Name="ldlDate" Grid.Row="5" Grid.Column="0" IsVisible="False"  Grid.ColumnSpan="5" BindingContext="{x:Reference DPMgrDate}" Text="{Binding  Path=Date}"></Label>         
 
 
+            <Image x:Name="MainImage" HorizontalOptions="CenterAndExpand" Grid.Row="6" Grid.Column="0" Grid.RowSpan="2"  Grid.ColumnSpan="3"/>
+            <Button x:Name="BtnTakeProduct" FontAttributes="Italic" BackgroundColor="#d8a878"  TextColor="#483018" Text="Take" Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="2" Clicked="BtnTakeProduct_Clicked" />
+            <Button x:Name="BtnBrowseProduct" TextColor="#483018" BackgroundColor="#d8a878" FontAttributes="Italic"  Text="Browse" Grid.Row="7" Grid.Column="3" Grid.ColumnSpan="2" Clicked="BtnBrowseProduct_Clicked" ></Button>
 
-            <Image x:Name="MainImage" Grid.Row="5" Grid.Column="0" Grid.RowSpan="2"  Grid.ColumnSpan="2" Source="{Binding Path=takeImage}" />
-            <Button x:Name="BtnTakeProduct" Text="Take" BorderRadius="2" BorderColor="Black"   HeightRequest="40"  Grid.Row="5" Grid.Column="3" TextColor="#2f1d6b" Command="{Binding TakeCommand}" />
-            <!--<Button x:Name="BtnBrowseProduct" Text="Browse" BorderRadius="2" BorderColor="Black"   HeightRequest="40" Grid.Row="6" Grid.Column="3" TextColor="#2f1d6b" Command="{Binding BrowseCommand}"></Button>-->
-            <Button x:Name="BtnAddProduct" HorizontalOptions="Start" BackgroundColor="#2f1d6b"  VerticalOptions="Center" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="4" TextColor="#2f1d6b" Text="Submit" Command="{Binding SubmitCommand}"  />
+
+            <Button x:Name="BtnAddProduct" BackgroundColor="#d8a878" FontAttributes="Italic" TextColor="#483018" VerticalOptions="Center" Grid.Row="9" Grid.ColumnSpan="5" HorizontalOptions="CenterAndExpand" Text="Submit" Clicked="BtnAddProduct_Clicked" />
         </Grid>
 
 
