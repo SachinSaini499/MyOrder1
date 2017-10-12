@@ -25,18 +25,15 @@ namespace MyOrder.ViewModel
         public string UserName { get; set; }
         public string Password { get; set; }
         public LoginViewModel()
-        {
-           
+        {           
             customerDetail = new CustomerDetail();
             customerServices = new CustomerServices();
-            getdata();
-            
+            getdata();         
 
         }
         public async void getdata()
         {
             _lstCustomerDetails = await customerServices.GetUsersAsync();
-
         }
         
         public string InValidCreadential
@@ -93,17 +90,19 @@ namespace MyOrder.ViewModel
                     if (UserName==""||Password=="")
                     {
                         InValidCreadential = MessageData.EmptyCredential;
+                        OnPropertyChanged();
                     }
                     else
                     {
                         foreach (var item in _lstCustomerDetails)
                         {
-                            if (item.CustomerEmailId == UserName)
+                            //if (item.CustomerEmailId == UserName)
                             {
-                                if (item.Password == Password)
+                              //  if (item.Password == Password)
                                 {
-                                    Xamarin.Forms.Application.Current.MainPage.Navigation.PushModalAsync(
-                                        new AllProductPage());
+                                    Application.Current.MainPage.Navigation.PushAsync(new AddNewProduct());
+                                    //Xamarin.Forms.Application.Current.MainPage.Navigation.PushModalAsync(
+                                    //    new AllProductPage());
                                     return;
                                     _loginSuccess = true;
                                 }

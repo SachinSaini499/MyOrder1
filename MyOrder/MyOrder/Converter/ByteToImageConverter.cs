@@ -13,20 +13,23 @@ namespace MyOrder.Converter
     {
         ImageSource ShowImage;      
 
-        object IValueConverter.Convert(object value, Type targetType, object parameter, CultureInfo culture)
+      public  object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            byte[] byteImage = (byte[])value;
-            Stream memoryStream = new MemoryStream(byteImage);
-
-            ShowImage = ImageSource.FromStream(() =>
+            if (value != null)
             {
-                return memoryStream;
-            });
+                byte[] byteImage = (byte[])value;
+                Stream memoryStream = new MemoryStream(byteImage);
 
-            return ShowImage;
+                ShowImage = ImageSource.FromStream(() =>
+                {
+                    return memoryStream;
+                });
+            }
+                return ShowImage;                
+
         }
 
-        object IValueConverter.ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+     public   object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return true;
         }

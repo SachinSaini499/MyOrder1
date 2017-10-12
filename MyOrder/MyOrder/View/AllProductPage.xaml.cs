@@ -17,7 +17,14 @@ namespace MyOrder.View
         {
             InitializeComponent();
 
-            BindingContext = new AllProductModel();
+           // BindingContext = new AllProductModel();
+        }
+
+        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var vm = BindingContext as AllProductModel;
+            var product = e.Item as ProductDetailTemp;
+            vm.HideOrShowProduct(product);
         }
     }
 }

@@ -2,34 +2,41 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:MyOrder.ViewModel"
-             x:Class="MyOrder.LoginPage" BackgroundImage="BackGroundnew.jpg" >
+             xmlns:behavior="clr-namespace:MyOrder.Behaviors"
+             x:Class="MyOrder.LoginPage" BackgroundImage="WoodyBAckground.jpg">
     <ContentPage.BindingContext>
         <viewmodels:LoginViewModel/>
     </ContentPage.BindingContext>
 
     <StackLayout>
-            <Grid Margin="20" VerticalOptions="CenterAndExpand" Padding="10"  >
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Label x:Name="lblInvalidCredMsg" Text="{Binding InValidCreadential}"></Label>
-            <Label Grid.Row="1" Grid.Column="0" Margin="17" TextColor="#2f1d6b" Grid.ColumnSpan="2" x:Name="lblHeading" FontSize="20" FontFamily="" Text="Welcome to  MyOrder" HorizontalOptions="Center" />
-            <Label Grid.Row="2" TextColor="#2f1d6b"  Grid.Column="0" Text="EmailId" x:Name="lblEmailId" />
-            <Entry Grid.Row="2" TextColor="#171717"  Text="{Binding UserName,Mode=TwoWay}" Grid.Column="1" ></Entry>
-            <Label Grid.Row="3" TextColor="#2f1d6b"  Grid.Column="0"  Text="Password"  />
-            <Entry Grid.Row="3"  TextColor="#171717" Text="{Binding Password,Mode=TwoWay}" Grid.Column="1"  ></Entry>
-            <Button Grid.Row="4" Grid.Column="0" BackgroundColor="#ebd09d" TextColor="#2f1d6b"   HorizontalOptions="End"  Text="Login" Command="{Binding LoginCommand}"></Button>
-            <Button Grid.Row="4" Grid.Column="1"  BackgroundColor="#ebd09d" TextColor="#2f1d6b"   HorizontalOptions="Start"  Text="Sign Up" Command="{Binding SignUpCommand}"></Button>
-            </Grid>
-     
+        <Grid VerticalOptions="CenterAndExpand" Margin="5" RowSpacing="1" ColumnSpacing="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" TextColor="#483018" Grid.ColumnSpan="4" FontSize="Large" Text="Welcome to MyOrder" HorizontalOptions="Center" />
+            <Label Grid.Row="1" Grid.Column="0" TextColor="#483018" FontAttributes="Italic" Text="EmailId"/>
+            <Entry Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"   TextColor="#483018" FontAttributes="Italic"  Text="{Binding UserName,Mode=TwoWay}">
+                <Entry.Behaviors>
+                    <behavior:EmailValidationBehaviour/>
+                </Entry.Behaviors>
+            </Entry>
+            <Label Grid.Row="2" Grid.Column="0" TextColor="#483018" FontAttributes="Italic"  Text="Password"  />
+            <Entry Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" TextColor="#483018" FontAttributes="Italic"  Text="{Binding Password,Mode=TwoWay}" ></Entry>
+            <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" FontAttributes="Italic" BackgroundColor="#d8a878"  TextColor="#483018"   HorizontalOptions="End"  Text="Login" Command="{Binding LoginCommand}"></Button>
+            <Button Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" FontAttributes="Italic" BackgroundColor="#d8a878"  TextColor="#483018"   HorizontalOptions="Start"  Text="Sign Up" Command="{Binding SignUpCommand}"></Button>
+            <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding InValidCreadential}"></Label>
+        </Grid>
 
     </StackLayout>
 </ContentPage>

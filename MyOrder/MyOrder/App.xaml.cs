@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using MyOrder.View;
 using Xamarin.Forms;
 
 namespace MyOrder
@@ -13,16 +13,18 @@ namespace MyOrder
         {
             InitializeComponent();
 
-            MainPage = new MyOrder.View.AllProductPage();
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()
         {
+           
             // Handle when your app starts
         }
 
         protected override void OnSleep()
         {
+            Page p = Application.Current.MainPage;
             // Handle when your app sleeps
         }
 

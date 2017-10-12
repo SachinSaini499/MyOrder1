@@ -16,16 +16,16 @@
             <Button   HorizontalOptions="StartAndExpand" Text="Add Product" Command="{Binding AddProductCommand}" ></Button>
             <Button  HorizontalOptions="StartAndExpand" Text="Back" Command="{Binding ShowProductCommand}" ></Button>
         </StackLayout>
-        
-            <ListView ItemsSource="{Binding lstProductDetail2}" HasUnevenRows="True" SeparatorColor="Black"
-              CachingStrategy="RecycleElement"
-              RowHeight="60">
+
+        <ListView ItemsSource="{Binding lstProductDetail2}" HasUnevenRows="True" SeparatorColor="Black"
+              RowHeight="40" ItemTapped="ListView_ItemTapped">
 
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                         <Grid ColumnSpacing="0" RowSpacing="0" Margin="4" Padding="0">
                             <Grid.RowDefinitions>
+                                <RowDefinition Height="50" ></RowDefinition>
                                 <RowDefinition Height="50" ></RowDefinition>
                                 <RowDefinition Height="50" ></RowDefinition>
                             </Grid.RowDefinitions>
@@ -35,7 +35,8 @@
                             </Grid.ColumnDefinitions>
                             <Image HorizontalOptions="Start" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"  Source="{Binding ProductImage}" ></Image>
                             <Label HorizontalOptions="Start" Grid.Row="0" Grid.Column="1"  Text="{Binding ProductName}" TextColor="#483018" FontSize="Medium"  FontAttributes="Bold" />
-                            <Label HorizontalOptions="Start" Grid.Row="1" Grid.Column="1" Text="{Binding ProductCategary}" TextColor="Black" />                            
+                            <Label HorizontalOptions="Start" Grid.Row="1" Grid.Column="1" Text="{Binding ProductCategary}" TextColor="Black" />
+                            <Button Grid.Row="2" Grid.Column="0" IsVisible="{Binding IsShow}" Text="Add in Cart" ></Button>
                         </Grid>
                     </ViewCell>
                     </DataTemplate>

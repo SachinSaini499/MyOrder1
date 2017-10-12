@@ -22,11 +22,13 @@ namespace MyOrder.ViewModel
         public string ProductCost { get; set; }
         public ImageSource ProductImage { get; set; }
         public string ManufacteringDate { get; set; }
+        public bool IsShow { get; set; }
     }
     public class AllProductModel : INotifyPropertyChanged
     {
         private ObservableCollection<ProductDetailTemp> items;
-        ProductServices productServices = new ProductServices();
+        private ProductDetailTemp _oldProduct;
+            ProductServices productServices = new ProductServices();
         List<ProductDetail> lstProductDetail = new List<ProductDetail>();     
         public ObservableCollection<ProductDetailTemp> lstProductDetail2
         {
@@ -42,6 +44,35 @@ namespace MyOrder.ViewModel
             getData();
 
         }
+
+        public void HideOrShowProduct(ProductDetailTemp product)
+        {
+            if (_oldProduct == product)
+            {
+                product.IsShow = !product.IsShow;
+                UpdateProductList(product);
+            }
+            else
+            {
+                if (_oldProduct != null)
+                {
+                    _oldProduct.IsShow = false;
+                    UpdateProductList(_oldProduct);
+                }
+                product.IsShow = true;
+                UpdateProductList(product);
+            }
+            _oldProduct = product;
+        }
+
+        private void UpdateProductList(ProductDetailTemp product)
+        {
+            var productIndex = lstProductDetail2.IndexOf(product);
+            lstProductDetail2.Remove(product);
+            lstProductDetail2.Insert(productIndex, product);
+            //OnPropertyChanged();
+        }
+
         public Command ShowProductCommand
         {
             get
