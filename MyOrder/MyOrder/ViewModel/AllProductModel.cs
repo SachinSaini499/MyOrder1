@@ -137,10 +137,11 @@ namespace MyOrder.ViewModel
                 return new Command(() =>
                 {
 
-                    Xamarin.Forms.Application.Current.MainPage.Navigation.PushModalAsync(
-                        new AddNewProduct());
-                    return;
-
+                    //Xamarin.Forms.Application.Current.MainPage.Navigation.PushModalAsync(
+                    //    new AddNewProduct());
+                  //  return;
+                  var navigationservice=new NavigationService();
+                    ; navigationservice.NavigateToSecondPage();
 
                 });
             }

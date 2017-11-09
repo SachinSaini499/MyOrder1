@@ -30,15 +30,15 @@
 
             <Label Text="Product Name" TextColor="#483018" Grid.Row="1" FontAttributes="Italic"  Grid.Column="0" Grid.ColumnSpan="2"></Label>
             <Entry Text="{Binding ProductName,Mode=TwoWay}" TextColor="#483018" FontAttributes="Italic"  Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="2" ></Entry>
-            <Image HorizontalOptions="End" IsVisible="{Binding productFlag}"  Source="Wrong.png" Grid.Row="1" Grid.Column="4"/>
+            <Image HorizontalOptions="End" x:Name="productFlag" IsVisible="False"  Source="Wrong.png" Grid.Row="1" Grid.Column="4"/>
 
             <Label Text="Product Category" FontAttributes="Italic"  TextColor="#483018" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"></Label>
             <Entry Text="{Binding ProductCategary,Mode=TwoWay}" FontAttributes="Italic"  TextColor="#483018" Grid.ColumnSpan="3" Grid.Row="2" Grid.Column="2" ></Entry>
-            <Image Grid.Row="2" Grid.Column="4" HorizontalOptions="End" IsVisible="{Binding categoryFlag}"  Source="Wrong.png"/>
+            <Image Grid.Row="2" Grid.Column="4" x:Name="categoryFlag" HorizontalOptions="End" IsVisible="False"  Source="Wrong.png"/>
 
             <Label Text="Product Cost" FontAttributes="Italic"  Grid.Row="3" TextColor="#483018" Grid.Column="0" Grid.ColumnSpan="2"></Label>
             <Entry Text="{Binding ProductCost,Mode=TwoWay}" FontAttributes="Italic"  TextColor="#483018" Keyboard="Keyboard.Numeric" Grid.ColumnSpan="3" Grid.Column="2" Grid.Row="3" ></Entry>
-            <Image Grid.Row="3" Grid.Column="4" HorizontalOptions="End" IsVisible="{Binding costFlag}"  Source="Wrong.png"/>
+            <Image Grid.Row="3" Grid.Column="4" x:Name="costFlag" HorizontalOptions="End" IsVisible="False"  Source="Wrong.png"/>
 
             <Label Text="Manufactur Date" FontAttributes="Italic"  Grid.Row="4" TextColor="#483018" Grid.Column="0" Grid.ColumnSpan="2"></Label>
             <DatePicker x:Name="DPMgrDate" HeightRequest="20" TextColor="#483018" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3"  ></DatePicker>

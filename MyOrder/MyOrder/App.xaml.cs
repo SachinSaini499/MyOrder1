@@ -13,7 +13,13 @@ namespace MyOrder
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+           // MainPage = new NavigationPage(new AllProductPage());
+
+            MainPage = new NavigationPage(new LoginPage())
+            {
+                BarBackgroundColor = Color.FromHex("#d8a878"),
+                BarTextColor = Color.FromHex("#483018")
+            };
         }
 
         protected override void OnStart()

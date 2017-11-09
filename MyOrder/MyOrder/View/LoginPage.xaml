@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:MyOrder.ViewModel"
              xmlns:behavior="clr-namespace:MyOrder.Behaviors"
+             xmlns:ef="clr-namespace:MyOrder.Effects"
              x:Class="MyOrder.LoginPage" BackgroundImage="WoodyBAckground.jpg">
     <ContentPage.BindingContext>
         <viewmodels:LoginViewModel/>
@@ -11,6 +12,8 @@
     <StackLayout>
         <Grid VerticalOptions="CenterAndExpand" Margin="5" RowSpacing="1" ColumnSpacing="1">
             <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -25,17 +28,21 @@
             </Grid.ColumnDefinitions>
 
             <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" TextColor="#483018" Grid.ColumnSpan="4" FontSize="Large" Text="Welcome to MyOrder" HorizontalOptions="Center" />
-            <Label Grid.Row="1" Grid.Column="0" TextColor="#483018" FontAttributes="Italic" Text="EmailId"/>
-            <Entry Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"   TextColor="#483018" FontAttributes="Italic"  Text="{Binding UserName,Mode=TwoWay}">
+            <Label Grid.Row="2" Grid.Column="0" TextColor="#483018" FontAttributes="Italic" Text="EmailId"/>
+            <Entry Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3"   TextColor="#483018" FontAttributes="Italic"  Text="{Binding UserName,Mode=TwoWay}">
                 <Entry.Behaviors>
                     <behavior:EmailValidationBehaviour/>
                 </Entry.Behaviors>
             </Entry>
-            <Label Grid.Row="2" Grid.Column="0" TextColor="#483018" FontAttributes="Italic"  Text="Password"  />
-            <Entry Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" TextColor="#483018" FontAttributes="Italic"  Text="{Binding Password,Mode=TwoWay}" ></Entry>
-            <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" FontAttributes="Italic" BackgroundColor="#d8a878"  TextColor="#483018"   HorizontalOptions="End"  Text="Login" Command="{Binding LoginCommand}"></Button>
-            <Button Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" FontAttributes="Italic" BackgroundColor="#d8a878"  TextColor="#483018"   HorizontalOptions="Start"  Text="Sign Up" Command="{Binding SignUpCommand}"></Button>
-            <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding InValidCreadential}"></Label>
+            <Label Grid.Row="3" Grid.Column="0" TextColor="#483018" FontAttributes="Italic"  Text="Password"  />
+            <Entry Grid.Row="3" IsPassword="True"  Grid.Column="1" Grid.ColumnSpan="3" TextColor="#483018" FontAttributes="Italic"  Text="{Binding Password,Mode=TwoWay}" >
+                <Entry.Effects>
+                    <ef:ShowHidePassEffect></ef:ShowHidePassEffect>
+                </Entry.Effects>
+            </Entry>
+            <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" FontAttributes="Italic" BackgroundColor="#d8a878"  TextColor="#483018"   HorizontalOptions="End"  Text="Login" Command="{Binding LoginCommand}"></Button>
+            <Button Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" FontAttributes="Italic" BackgroundColor="#d8a878"  TextColor="#483018"   HorizontalOptions="Start"  Text="Sign Up" Command="{Binding SignUpCommand}"></Button>
+            <Label Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding InValidCreadential}"></Label>
         </Grid>
 
     </StackLayout>

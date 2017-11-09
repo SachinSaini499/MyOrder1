@@ -2,37 +2,45 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModel="clr-namespace:MyOrder.ViewModel;assembly=MyOrder"
-             x:Class="MyOrder.View.SignUp" BackgroundImage="BackGroundnew.jpg">
+             x:Class="MyOrder.View.SignUp" BackgroundImage="WoodyBAckground.jpg">
     <ContentPage.BindingContext>
         <viewModel:SignUpModel/>
     </ContentPage.BindingContext>
 
-    <StackLayout>
-        <Grid  Margin="20" VerticalOptions="CenterAndExpand" Padding="20" >
+    <ScrollView>
+        <Grid  RowSpacing="4" ColumnSpacing="0" Margin="10" >
                 <Grid.RowDefinitions>
+                     <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-            <Label x:Name="LblName" FontSize="17" Text="Name" TextColor="#2f1d6b" HorizontalOptions="Center" FontFamily="Droid Sans Mono" ></Label>
-            <Entry Grid.Row="0" FontSize="17" TextColor="#2f1d6b" Text="{Binding customerDetail.CustomerName,Mode=TwoWay}" Grid.Column="1" ></Entry>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" FontSize="Large"  FontAttributes="Bold" HorizontalOptions="CenterAndExpand" Text="Add New User" TextColor="#483018"></Label>
+            <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" x:Name="LblName" FontAttributes="Italic"  TextColor="#483018" Text="Name" ></Label>
+            <Entry Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" FontAttributes="Italic"  TextColor="#483018" Text="{Binding customerDetail.CustomerName,Mode=TwoWay}" ></Entry>
 
-            <Label Grid.Row="1" FontSize="17" Grid.Column="0" TextColor="#2f1d6b" x:Name="LblEmail" Text="Email" HorizontalOptions="Center" />
-            <Entry Grid.Row="1" FontSize="17"  TextColor="#2f1d6b" Text="{Binding customerDetail.CustomerEmailId,Mode=TwoWay}" Grid.Column="1" ></Entry>
+            <Label Grid.Row="3" Grid.ColumnSpan="2" FontAttributes="Italic"  TextColor="#483018" Grid.Column="0" x:Name="LblEmail" Text="Email" />
+            <Entry Grid.Row="3" Grid.ColumnSpan="3" FontAttributes="Italic"  TextColor="#483018" Text="{Binding customerDetail.CustomerEmailId,Mode=TwoWay}" Grid.Column="2" ></Entry>
 
-            <Label FontSize="17" Grid.Row="2" HorizontalOptions="Center" TextColor="#2f1d6b" Grid.Column="0" Text="Password" x:Name="LblPassword" />
-            <Entry Grid.Row="2" FontSize="17" TextColor="#2f1d6b" Text="{Binding customerDetail.Password,Mode=TwoWay}" Grid.Column="1" ></Entry>
+            <Label Grid.Row="4" Grid.ColumnSpan="2" FontAttributes="Italic"  TextColor="#483018" Grid.Column="0" Text="Password" x:Name="LblPassword" />
+            <Entry Grid.Row="4" Grid.ColumnSpan="3" FontAttributes="Italic"  TextColor="#483018" Text="{Binding customerDetail.Password,Mode=TwoWay}" Grid.Column="2" ></Entry>
 
-            <Label Grid.Row="3" FontSize="17" HorizontalOptions="Center" TextColor="#2f1d6b" Grid.Column="0" Text="Address"  />
-            <Entry Grid.Row="3" FontSize="17"  TextColor="#2f1d6b" Text="{Binding customerDetail.CustomerAddress,Mode=TwoWay}" Grid.Column="1" ></Entry>
+            <Label Grid.Row="5" Grid.ColumnSpan="2" FontAttributes="Italic"  TextColor="#483018"  Grid.Column="0" Text="Address"  />
+            <Entry Grid.Row="5" Grid.ColumnSpan="3" FontAttributes="Italic"  TextColor="#483018" Text="{Binding customerDetail.CustomerAddress,Mode=TwoWay}" Grid.Column="2" ></Entry>
 
-            <Button Grid.ColumnSpan="2" FontSize="17" Grid.Row="4"  Grid.Column="0" BackgroundColor="#ebd09d" TextColor="#2f1d6b" HorizontalOptions="Center"  Text="Submit" Command="{Binding SubmitCommand}"></Button>
+            <Button Grid.ColumnSpan="5" FontAttributes="Italic" BackgroundColor="#d8a878"  TextColor="#483018" Grid.Row="7"  Grid.Column="0" HorizontalOptions="Center"  Text="Submit" Command="{Binding SubmitCommand}"></Button>
             </Grid>
-    </StackLayout>
+    </ScrollView>
 </ContentPage>

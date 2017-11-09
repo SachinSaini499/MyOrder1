@@ -22,9 +22,9 @@ namespace MyOrder.View
         ProductServices productServices;
         BinaryReader binaryReader;
         byte[] byteImage;
-        public bool productFlag = false;
-        public bool categoryFlag = false;
-        public bool costFlag = false;
+        //public bool productFlag ;
+        //public bool categoryFlag ;
+        //public bool costFlag ;
         public ProductDetail productDetail
         {
             get { return _productDetail; }
@@ -38,7 +38,9 @@ namespace MyOrder.View
             InitializeComponent();
             BindingContext = productDetail;
             productServices = new Services.ProductServices();
-        }
+            this.Title = "Add New Product";
+         
+    }
         async private void BtnTakeProduct_Clicked(object sender, EventArgs e)
         {
             try
@@ -87,19 +89,19 @@ namespace MyOrder.View
                 productDetail.ManufacteringDate = ldlDate.Text;
                 if (string.IsNullOrEmpty(productDetail.ProductName))
                 {
-                    productFlag = true;
+                    productFlag.IsVisible = true;
                 }
                 if (string.IsNullOrEmpty(productDetail.ProductCategary))
                 {
-                    categoryFlag = true;
+                    categoryFlag.IsVisible = true;
                 }
                 if (string.IsNullOrEmpty(productDetail.ProductCost))
                 {
-                    costFlag = true;
+                    costFlag.IsVisible = true;
                 }
                 if (!string.IsNullOrEmpty(productDetail.ProductName) && !string.IsNullOrEmpty(productDetail.ProductCategary) && !string.IsNullOrEmpty(productDetail.ProductCost))
                 {
-                    productFlag = categoryFlag = costFlag = false;
+                    productFlag.IsVisible = categoryFlag.IsVisible = costFlag.IsVisible = false;
                     await productServices.postUsersAsync(productDetail);
                     await Navigation.PushModalAsync(new AllProductPage());
                 }

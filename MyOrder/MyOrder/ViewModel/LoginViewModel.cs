@@ -28,14 +28,13 @@ namespace MyOrder.ViewModel
         {           
             customerDetail = new CustomerDetail();
             customerServices = new CustomerServices();
-            getdata();         
+           // getdata();         
 
         }
         public async void getdata()
         {
             _lstCustomerDetails = await customerServices.GetUsersAsync();
-        }
-        
+        }        
         public string InValidCreadential
         {
             get
@@ -54,7 +53,7 @@ namespace MyOrder.ViewModel
                 OnPropertyChanged();
             }
         }
-       
+               
         //public CustomerDetail SelectedUser
         //{
         //    get { return _selectedUser; }
@@ -64,7 +63,6 @@ namespace MyOrder.ViewModel
         //        OnPropertyChanged();
         //    }
         //}
-
         public Command SignUpCommand
         {
             get
@@ -76,10 +74,8 @@ namespace MyOrder.ViewModel
                 });
             }
         }
-
         public Command LoginCommand
         {
-
             get
             {
                 return new Command(() =>
@@ -94,17 +90,15 @@ namespace MyOrder.ViewModel
                     }
                     else
                     {
-                        foreach (var item in _lstCustomerDetails)
+                       // foreach (var item in _lstCustomerDetails)
                         {
                             //if (item.CustomerEmailId == UserName)
                             {
                               //  if (item.Password == Password)
                                 {
-                                    Application.Current.MainPage.Navigation.PushAsync(new AddNewProduct());
-                                    //Xamarin.Forms.Application.Current.MainPage.Navigation.PushModalAsync(
-                                    //    new AllProductPage());
-                                    return;
+                                    Application.Current.MainPage.Navigation.PushModalAsync(new AddNewProduct());                             
                                     _loginSuccess = true;
+                                    return;
                                 }
                             }
                         }
@@ -112,11 +106,7 @@ namespace MyOrder.ViewModel
                         {
                             InValidCreadential = MessageData.InvalidCredential;
                         }
-
-
                     }
-
-
                     // // if (lstCustomerDetail == null)
                     //  {
                     //      CustomerDetail customerDetail = new CustomerDetail();
@@ -128,8 +118,6 @@ namespace MyOrder.ViewModel
                     ////  else
                     //  {
                     //  }
-
-
                     IsBusy = false;
                 });
             }
