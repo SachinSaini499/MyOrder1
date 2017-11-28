@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Android.Content;
 
 namespace MyOrder.Droid
 {
@@ -21,6 +22,15 @@ namespace MyOrder.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
+
+            //StartService(new Intent(this, typeof(PeriodicService)));
+            var alarmIntent = new Intent(this, typeof(BackgroundReceiver));
+
+            var pending = PendingIntent.GetBroadcast(this, 0, alarmIntent, PendingIntentFlags.UpdateCurrent);
+
+            var alarmManager = GetSystemService(AlarmService).JavaCast<AlarmManager>();
+            alarmManager.Set(AlarmType.RtcWakeup, SystemClock.ElapsedRealtime() + 20* 1000, pending);
+
         }
     }
 }

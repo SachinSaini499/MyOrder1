@@ -15,7 +15,7 @@ namespace MyOrder
 
            // MainPage = new NavigationPage(new AllProductPage());
 
-            MainPage = new NavigationPage(new LoginPage())
+            MainPage = new NavigationPage(new LayoutPage())
             {
                 BarBackgroundColor = Color.FromHex("#d8a878"),
                 BarTextColor = Color.FromHex("#483018")

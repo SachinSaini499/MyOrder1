@@ -41,6 +41,7 @@
     <Compile Include="Behaviors\EmailValidationBehaviour.cs" />
     <Compile Include="Converter\ByteToImageConverter.cs" />
     <Compile Include="Effects\ShowHidePassEffect.cs" />
+    <Compile Include="Interfaces\IDDTest.cs" />
     <Compile Include="Interfaces\INavigationService.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -66,6 +67,9 @@
     </Compile>
     <Compile Include="View\AllProductPage.xaml.cs">
       <DependentUpon>AllProductPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LayoutPage.xaml.cs">
+      <DependentUpon>LayoutPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
@@ -184,7 +188,12 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="View\LayoutPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

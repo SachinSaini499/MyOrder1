@@ -208,9 +208,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackgroundReceiver.cs" />
+    <Compile Include="DDTest.cs" />
     <Compile Include="Effects\ShowHidePassEffect.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="MainApplication.cs" />
+    <Compile Include="PeriodicService.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RestClient\RestClient.cs" />

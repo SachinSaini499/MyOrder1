@@ -8,6 +8,7 @@ using Plugin.RestClient;
 
 namespace MyOrder.Services
 {
+ 
   public  class CustomerServices
     {
         async public Task<List<CustomerDetail>> GetUsersAsync()

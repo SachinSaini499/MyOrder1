@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyOrder.View.LayoutPage">
+    <ContentPage.Content>
+        
+            <!--<AbsoluteLayout>
+                <BoxView x:Name="backBox" Color="Aqua" AbsoluteLayout.LayoutBounds="0,0,1,.3" AbsoluteLayout.LayoutFlags="SizeProportional"></BoxView>
+            <Image Source="icon.png" AbsoluteLayout.LayoutBounds=".4,.05,.8,.2" AbsoluteLayout.LayoutFlags="All"></Image>
+            </AbsoluteLayout>-->
+        <!--<RelativeLayout>
+            <BoxView x:Name="backBox" Color="Aqua" 
+                     RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=X,Factor=0,Constant=0 }"
+                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Y,Factor=0,Constant=0 }"
+                     RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0 }"
+                     RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=.2,Constant=0 }"
+                     
+                     ></BoxView>
+            <Image Source="icon.png"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,Property=Width,Factor=.3,Constant=0 ,ElementName=backBox}"
+                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,Property=Height,Factor=.05,Constant=0,ElementName=backBox }"
+                     RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToView,Property=Width,Factor=.4,Constant=0,ElementName=backBox }"
+                     RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToView,Property=Height,Factor=.9,Constant=0 ,ElementName=backBox}"
+                     
+                     
+                   
+                   ></Image>
+
+        </RelativeLayout>-->
+        <StackLayout>
+            <Button Clicked="Button_Clicked" Text="Toast"></Button>
+            <Label Text="Welcome to Xamarin Forms!" 
+           x:Name="BackgroundServiceLabel"
+           VerticalOptions="Center" 
+           HorizontalOptions="Center" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
